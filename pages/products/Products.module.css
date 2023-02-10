@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
+
+
+
+/* Breadcump */
+.path_container {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    align-items: center;
+    padding: 10px 0;
+   
+}
+.background_color {
+    background-color: rgba(220, 220, 220, 0.3);
+}
+.breadcump_home {
+    text-decoration: none;
+    color: #333;
+
+}
+.breadcump_home:hover {
+    color: #333;
+}
+.icon_breadcump {
+    font-weight: 600;
+    font-size: 18px;
+    width: 28px;
+}
+.filter {
+    border: 1px solid #ededed;
+    font-family: 'Roboto', sans-serif;
+    padding: 15px;
+}
+.content {
+    padding-bottom: 15px;
+}
+.select {
+    padding: 5px 10px;
+    font-family: 'Roboto', sans-serif;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+}
+.boxSelect {
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    padding: 5px 10px;
+}
+
+.product {
+    margin: 30px 20px;
+  }
+ 
+
+  .product_hover {
+    margin: 10px auto;
+    border: 1px solid #CCC;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+}
+.card {
+    position: relative;
+    margin: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card .img_sale:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(0.9);
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    opacity:1;
+}
+.btn_sale:hover {
+    background-color: #333;
+    color: #fff;
+}
+.name_products_sale {
+    font-size: 16px;
+    text-align: center;
+    height: 38px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.price {
+    color: #ddba76;
+    margin-bottom: 8px;
+    text-decoration: line-through;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.price_sale {
+    color: #ddba76;
+    margin-bottom: 8px;
+    
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+.btn_sale {
+    background: none;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 5px 10px;
+    
+    text-align: center;
+}
+.color_link {
+    color: #282727;
+    text-decoration: none;
+}
+.color_link:hover {
+    color: #282727;
+
+}

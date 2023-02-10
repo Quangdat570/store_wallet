@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
+
+@media screen and (max-width:767px) {
+    .title_footer {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width:768px) {
+    .title_footer {
+        font-size: 30px;
+    }
+
+}
+
+.footer_image {
+    width: 100%;
+    height: 120px;
+    margin: auto;
+    position: relative;
+}
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.title_footer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.contact li {
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+    
+}
+.contact {
+    padding: 0;
+    text-decoration: none;
+}
+.location {
+    color: #282727;
+    display: flex;
+    text-decoration: none;
+    padding-bottom: 15px;
+}
+.location:hover {
+    color: #282727;
+
+}
+.icons {
+    color: #ddba76;
+    margin-right: 10px;
+    font-weight: 900;
+    font-size: 19px;
+}
+.content_location {
+    
+    text-decoration: none;
+}
+.title_1 {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.email_input {
+    display: flex;
+    margin-top: 16px;
+    height: 34px;
+    
+}
+.email_input input {
+    border: 1px solid #ddba76;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+.btn_sign_up {
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    padding: 5px 10px;
+    background-color: #ddba76;
+    font-weight: 500;
+    font-size: 16px;
+}
+.border_radius {
+    border-radius: 30px;
+    margin-right: 30px;
+}
+.border_radius_youtube {
+    border-radius: 10px;
+    margin-right: 30px;
+}
+.media_container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+}
