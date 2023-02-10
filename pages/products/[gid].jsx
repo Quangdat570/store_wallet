@@ -1,8 +1,4 @@
 
-import { IoIosArrowForward, IoMdTime} from 'react-icons/io'
-import { FaMoneyCheckAlt } from 'react-icons/fa'
-import { AiFillTags, AiOutlineShareAlt } from 'react-icons/ai'
-import { RiComputerLine } from 'react-icons/ri'
 import { BsFlagFill, BsFillShareFill,BsFillGiftFill} from 'react-icons/bs'
 import { RxDoubleArrowRight } from 'react-icons/rx'
 
