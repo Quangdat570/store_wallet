@@ -47,16 +47,24 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import { AiOutlineMenu } from 'react-icons/ai'
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 import { app } from '../../../lib/firebase'
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setUser } from "../../../store/auth.slice";
+import { loadProduct } from '../../../store/features/Product.slice'
 import {
   getFirestore,
   collection,
   onSnapshot,
   query,
 } from "firebase/firestore";
+
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 // import { loadProduct } from '../../../store/features/Product.slice'
 
@@ -66,77 +74,77 @@ export default function Header() {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-//   const dispatch = useDispatch();
-//   const user = useSelector(selectUser);
-//   const auth = getAuth(app);
-//   const provider = new GoogleAuthProvider();
-//   const router = useRouter();
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+  const router = useRouter();
 
-//   useEffect(() => {
-//       auth.onAuthStateChanged((auth, error) => {
-//           if (auth && !user) {
-//               dispatch(
-//                   setUser({
-//                       accessToken: auth.accessToken,
-//                       uid: auth.uid,
-//                       displayName: auth.displayName,
-//                       email: auth.email,
-//                   })
-//               );
-//           } else {
-//               dispatch(setUser(null));
-//           }
-//       });
-//   }, []);
+  useEffect(() => {
+      auth.onAuthStateChanged((auth, error) => {
+          if (auth && !user) {
+              dispatch(
+                  setUser({
+                      accessToken: auth.accessToken,
+                      uid: auth.uid,
+                      displayName: auth.displayName,
+                      email: auth.email,
+                  })
+              );
+          } else {
+              dispatch(setUser(null));
+          }
+      });
+  }, []);
 
-//   React.useEffect(() => {
-//     dispatch(loadProduct({ productId: 1 }));
-//   }, []);
+  React.useEffect(() => {
+    dispatch(loadProduct({ productId: 1 }));
+  }, []);
 
 
-//   const [carts, setCart] = React.useState([]);
+  const [carts, setCart] = React.useState([]);
 
-//   const cartRef = collection(getFirestore(app), "store");
-//   React.useEffect(() => {
-//     const q = query(cartRef);
-//     const cartlist = onSnapshot(q, (querySnapshot) => {
-//       let data = [];
-//       querySnapshot.forEach((doc) => {
-//         data.push({ ...doc.data(), id: doc.id });
-//       });
-//       setCart(data.filter((item) => item.uid == (user && user.uid)));
-//     });
+  const cartRef = collection(getFirestore(app), "store");
+  React.useEffect(() => {
+    const q = query(cartRef);
+    const cartlist = onSnapshot(q, (querySnapshot) => {
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setCart(data.filter((item) => item.uid == (user && user.uid)));
+    });
 
-//     return () => cartlist();
-//   }, [user == null ? null : user.uid]);
+    return () => cartlist();
+  }, [user == null ? null : user.uid]);
 
-//   const [anchorEl, setAnchorEl] = useState(null);
-//   const [anchorAuth, setanchorAuth] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorAuth, setanchorAuth] = useState(null);
 
   
   
 
-//   function handleClose() {
-//     setAnchorEl(null);
-//   }
+  function handleClose() {
+    setAnchorEl(null);
+  }
 
-//   function handleClickModalAuth(event) {
-//     if (anchorAuth !== event.currentTarget) {
-//       setanchorAuth(event.currentTarget);
-//     }
-//   }
+  function handleClickModalAuth(event) {
+    if (anchorAuth !== event.currentTarget) {
+      setanchorAuth(event.currentTarget);
+    }
+  }
 
-//   function handleCloseModalAuth() {
-//     setanchorAuth(null);
-//   }
+  function handleCloseModalAuth() {
+    setanchorAuth(null);
+  }
 
-//   const openAuth = Boolean(anchorAuth);
-//   const idAuth = openAuth ? "simple-popover" : undefined;
+  const openAuth = Boolean(anchorAuth);
+  const idAuth = openAuth ? "simple-popover" : undefined;
 
-//   const handleSearchChange = (e) => {
-//     setSearch(e.target.value);
-//     dispatch(searchFilterChange(e.target.value));
-//   };
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+    dispatch(searchFilterChange(e.target.value));
+  };
 
   const [state, setState] = React.useState({
     top: false,
@@ -277,10 +285,42 @@ export default function Header() {
         </div>
         <div className='search d-flex align-items-center'>
           <div>
-          <PersonIcon sx={{fontSize:'25px', color:"#282727"}} />
-          {/* {!auth.currentUser ? (
+          
+          {!auth.currentUser ? (
                                   
-                                    <Link href='/login'><button className={styles.button_login}>Login</button></Link>
+                                    // <Link href='/login'>
+                                    //   <PersonIcon sx={{fontSize:'25px', color:"#282727"}} />
+                                    //   </Link>
+                                    <PersonIcon sx={{fontSize:'25px', color:"#282727", cursor:'pointer'}}  onClick={() => {
+                                      signInWithPopup(auth, provider)
+                                        .then(() => {
+                                          if (auth.currentUser) {
+                                            toast.success(`Login successfully`, {
+                                              position: "top-right",
+                                              autoClose: 5000,
+                                              hideProgressBar: false,
+                                              closeOnClick: true,
+                                              pauseOnHover: true,
+                                              draggable: true,
+                                              progress: undefined,
+                                              theme: "light",
+                                            });
+                                            router.push("/");
+                                          }
+                                        })
+                                        .catch((err) => {
+                                          toast.error(`Incorrect account or password`, {
+                                            position: "top-right",
+                                            autoClose: 5000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                          });
+                                        });
+                                    }} />
                                 ) : (
                                  
                                     <Box>
@@ -289,7 +329,7 @@ export default function Header() {
                         onClick={handleClickModalAuth}
                         sx={{ position: "relative" }}
                       >
-                        <PersonIcon sx={{fontSize:'25px', color:"#fff"}} />
+                        <PersonIcon sx={{fontSize:'25px', color:"#282727"}} />
                         <Popover
                           id={idAuth}
                           open={openAuth}
@@ -315,7 +355,7 @@ export default function Header() {
                               className={styles.under}
                               
                             >
-                              <Button sx={{color:'#000', borderBottom:'1px solid #727272'}}>{auth.currentUser.displayName}</Button>
+                              <Button sx={{color:'#000', borderBottom:'1px solid #727272', cursor:'pointer'}}>{auth.currentUser.displayName}</Button>
                             </Link>
 
                             <Button
@@ -329,17 +369,17 @@ export default function Header() {
                         </Popover>
                       </IconButton>
                     </Box>
-                                )} */}
+                                )}
            
           </div>
 
           <div className={styles.p8}>
-          <div className={styles.iconCart} >
+          {/* <div className={styles.iconCart} >
                     <Link href="/cart" className="link">
                       <ShoppingCartTwoToneIcon className={styles.cart} />
                     </Link>
-                  </div>
-            {/* {auth.currentUser && carts.length === 0 ? (
+                  </div> */}
+            {auth.currentUser && carts.length === 0 ? (
                 <div className={styles.iconCart} count={0}>
                   <Link href="/cart" className="link">
                     <ShoppingCartTwoToneIcon className={styles.cart} />
@@ -354,7 +394,7 @@ export default function Header() {
                     </Link>
                   </div>
                 </>
-              )} */}
+              )}
           </div>
           
           

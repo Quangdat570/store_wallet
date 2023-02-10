@@ -2,119 +2,236 @@ import React from 'react'
 import styles from './Products.module.css'
 import Link from 'next/link'
 import { RxDoubleArrowRight } from 'react-icons/rx'
-import { Container, Row, Col,Form, Card } from 'react-bootstrap'
+import { Container, Row, Col,Form, Card,Pagination } from 'react-bootstrap'
 import { Box, FormGroup } from "@mui/material";
 
 
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import {
 //   selectProductsList,
 //   loadProduct,
 // } from "../../store/features/Product.slice";
-// import { useForm } from "react-hook-form";
-// import { useRouter } from "next/router";
-// import { toast, ToastContainer } from "react-toastify";
-// import { selectCart } from "../../store/features/cart/cart.slice";
+import { selectProductsList, loadProduct,selectProductById } from '../../store/features/Product.slice'
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { toast, ToastContainer } from "react-toastify";
+import { selectCart } from "../../store/features/cart/cart.slice";
+
+
+
+// User
+
+import {
+  collection,
+  doc,
+  getFirestore,
+  onSnapshot,
+  query,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { app } from "../../lib/firebase";
+import { getAuth } from "firebase/auth";
+import { selectUser } from "../../store/auth.slice"
 
 
 
 
 
-const categories = [
-  {
-    id: 2,
-    label: "Ví Da Nam",
-    value: "man",
-  },
-  {
-    id: 3,
-    label: "Ví Da Nữ",
-    value: "women",
-  },
-  {
-    id: 4,
-    label: "Dây Da Đồng Hồ ",
-    value: "clock",
-  },
 
-  {
-    id: 5,
-    label: "Túi Da - Cặp Da ",
-    value: "leather",
-  },
-
-  {
-    id: 6,
-    label: "Thắt Lưng ",
-    value: "belt",
-  },
-  {
-    id: 7,
-    label: "Phụ Kiện ",
-    value: "accessory",
-  },
-
-  {
-    id: 8,
-    label: "Các Loại Bao Da ",
-    value: "orther",
-  },
-];
 
 const Products = ({ data = [], filter, url }) => {
 
-  // const {
-  //   products,
-  //   currentPage,
-  //   totalPage,
-  //   pageChanged,
-  //   filterChanged,
-  //   filtersSort,
-  //   filtersSearch,
-  //   searchByName,
-  // } = useSelector(selectProductsList);
-  // const dispatch = useDispatch();
-  // React.useEffect(() => {
-  //   dispatch(loadProduct({ productId: 1 }));
-  // }, []);
+  const {
+    products,
+    currentPage,
+    totalPage,
+    pageChanged,
+    filterChanged,
+    filtersSort,
+    filtersSearch,
+    searchByName,
+  } = useSelector(selectProductsList);
 
-  // const { items } = useSelector(selectCart);
-  // const [cart, setCart] = React.useState([]);
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(loadProduct({ productId: 1 }));
+  }, []);
 
-  // const [searchText, setSearchText] = React.useState("");
-  // const [sort, setSort] = React.useState("");
-  // const handleSearchTextChange = (e) => {
-  //   setSearchText(e.target.value);
-  //   dispatch(searchByName(e.target.value.toLowerCase()));
-  // };
+  const { items } = useSelector(selectCart);
+  const [cart, setCart] = React.useState([]);
 
-  // const handleSort = (e) => {
-  //   setSort(e.target.value);
-  //   dispatch(filtersSort(e.target.value));
-  // };
+  const [searchText, setSearchText] = React.useState("");
+  const [sort, setSort] = React.useState("");
+  const handleSearchTextChange = (e) => {
+    setSearchText(e.target.value);
+    dispatch(searchByName(e.target.value.toLowerCase()));
+  };
 
-  // const paginationItems = new Array(totalPage)
-  //   .fill(null)
-  //   .map((value, index) => (
-  //     <Pagination.Item
-  //       key={index}
-  //       active={index === currentPage}
-  //       onClick={() => dispatch(pageChanged(index))}
-  //     >
-  //       {index + 1}
-  //     </Pagination.Item>
-  //   ));
+  const handleSort = (e) => {
+    setSort(e.target.value);
+    dispatch(filtersSort(e.target.value));
+  };
 
-  // const router = useRouter();
-  // const { register, handleSubmit, getValues } = useForm({
-  //   defaultValues: {
-  //     // categories: filter.categories,
-  //     // brand: filter.brand,
-  //   },
-  // });
-  // const filterRef = React.useRef();
-  // const sortRef = React.useRef();
+  const paginationItems = new Array(totalPage)
+    .fill(null)
+    .map((value, index) => (
+      <Pagination.Item
+        key={index}
+        active={index === currentPage}
+        onClick={() => dispatch(pageChanged(index))}
+      >
+        {index + 1}
+      </Pagination.Item>
+    ));
 
+  const router = useRouter();
+  const { register, handleSubmit, getValues } = useForm({
+    defaultValues: {
+      // categories: filter.categories,
+      // brand: filter.brand,
+    },
+  });
+  const filterRef = React.useRef();
+  const sortRef = React.useRef();
+
+
+  const categories = [
+    {
+      id: 2,
+      label: "Ví Da Nam",
+      value: "man",
+    },
+    {
+      id: 3,
+      label: "Ví Da Nữ",
+      value: "women",
+    },
+    {
+      id: 4,
+      label: "Dây Da Đồng Hồ ",
+      value: "clock",
+    },
+  
+    {
+      id: 5,
+      label: "Túi Da - Cặp Da ",
+      value: "leather",
+    },
+  
+    {
+      id: 6,
+      label: "Thắt Lưng ",
+      value: "belt",
+    },
+    {
+      id: 7,
+      label: "Phụ Kiện ",
+      value: "accessory",
+    },
+  
+    {
+      id: 8,
+      label: "Các Loại Bao Da ",
+      value: "orther",
+    },
+  ];
+
+
+  // add to cart
+  const auth = getAuth(app);
+  const user = useSelector(selectUser);
+  const [quantity, setQuantity] = React.useState(1);
+  const product = useSelector(selectProductById(data.id));
+
+  const countUp = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const countDown = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+    if (quantity === 1) {
+      return quantity;
+    }
+  };
+
+
+
+  // add to cart
+  const cartRef = collection(getFirestore(app), "store");
+
+  React.useEffect(() => {
+    const q = query(cartRef);
+    const wishlist = onSnapshot(q, (querySnapshot) => {
+      let data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setCart(data.filter((item) => item.uid == (user && user.uid)));
+    });
+    return () => wishlist();
+  }, []);
+
+  const handleAddtoCart = async (product) => {
+    
+    // check product exist
+    const check = cart.filter(
+      (item) => item.uid == user.uid && item.name == product.name
+    );
+
+    if (auth.currentUser) {
+      if (check.length > 0) {
+        toast.success(`${product.name} added to cart successfully`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        const reference = doc(cartRef, check[0].id);
+        await updateDoc(reference, {
+          quantity: check[0].quantity + quantity,
+        });
+        console.log("success");
+      } else {
+        console.log("fail")
+        toast.success(`${product.name} added to cart successfully`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        const reference = doc(cartRef);
+        await setDoc(reference, {
+          uid: user.uid,
+          productId: product.id,
+          quantity: quantity,
+          ...product,
+        });
+
+      }
+    } else {
+      toast.warning(`You need to login to perform this function`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <>
@@ -134,7 +251,19 @@ const Products = ({ data = [], filter, url }) => {
         <Col xs={12} lg={3} >
           <div className={styles.filter_product}>
           <h5>Danh mục sản phẩm</h5>
-          <Form className={styles.filter}>
+          <Form className={styles.filter}
+                onChange={() => {
+                  const filter = [];
+                  console.log(filter);
+                  filterRef.current.elements.filter.forEach(
+                    (checkbox) => {
+                      if (checkbox.checked) filter.push(checkbox.value);
+                    }
+                  );
+
+                  dispatch(filterChanged(filter));
+                }}
+                ref={filterRef}>
               <Box mb="2rem">
                         <FormGroup className={styles.checkbox}>
                           {categories.map((categories) => {
@@ -158,7 +287,7 @@ const Products = ({ data = [], filter, url }) => {
         <Col xs={12} lg={9}>
           <div className={styles.title}>
             <h4 className=''>Tất cả sản phẩm</h4>
-          <div className={styles.boxSelect}>
+          <div className={styles.boxSelect} onChange={handleSort}>
             <div className='pe-2'>Sắp xếp: </div>
               <select className={styles.select} >
                 <option>Mặc định</option>
@@ -170,28 +299,38 @@ const Products = ({ data = [], filter, url }) => {
           </div>
 
           <div className="row">
+            {products.map((item) => (
             <div className="col-sm-6 col-lg-4">
-              <Link href='' className={styles.color_link}>
+              <Link href={{
+                pathname: '/products/[gid]',
+                query: {gid: item.id}
+              }} className={styles.color_link} key={item.id}>
                 
                   <Card className={styles.card}>
                   <div  >
-                    <Card.Img variant="top" src="../home-img/sale1.jpg" className={styles.img_sale}  />
+                    <Card.Img variant="top" src={item.image} className={styles.img_sale}  />
                     
                   </div>
                   <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-                    <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
+                    <Card.Title> <div className={styles.name_products_sale}>{item.name}</div></Card.Title>
                     <Card.Text>
-                    <div className={styles.price}>350.000 VND</div>
+                    <div className={styles.price}>{item.price} VND</div>
                     </Card.Text>
-                    <div className={styles.price_sale}> 250.000 VND</div>
-                    <button className={styles.btn_sale}>Mua ngay</button>
+                    <div className={styles.price_sale}> {item.price_sale} VND</div>
+                    <button className={styles.btn_sale}  >Mua ngay</button>
                   </Card.Body>
                 </Card>
                 
               </Link>
             </div>
 
-            <div className="col-sm-6 col-lg-4">
+            ))}
+
+              <Pagination className={styles.pagination}>
+                {paginationItems}
+              </Pagination>
+
+            {/* <div className="col-sm-6 col-lg-4">
               <Link href='' className={styles.color_link}>
                 
                   <Card className={styles.card}>
@@ -252,7 +391,7 @@ const Products = ({ data = [], filter, url }) => {
                 </Card>
                 
               </Link>
-            </div>
+            </div> */}
 
             
           </div>
@@ -265,3 +404,4 @@ const Products = ({ data = [], filter, url }) => {
 }
 
 export default Products
+
