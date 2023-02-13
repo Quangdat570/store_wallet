@@ -29,6 +29,7 @@
 }
 .img {
     width: 100%;
+    padding: 30px;
 }
 .mtT80 {
     font-family: 'Roboto', sans-serif;
@@ -115,4 +116,65 @@
     color: #282727;
     font-weight: 500;
     cursor: pointer;
+}
+
+.card {
+    position: relative;
+    margin: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card .img_sale:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(0.9);
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    opacity:1;
+}
+.btn_sale:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.name_products_sale {
+    font-size: 16px;
+    text-align: center;
+    height: 38px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.price {
+    color: #ddba76;
+    margin-bottom: 8px;
+    text-decoration: line-through;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.price_sale {
+    color: #ddba76;
+    margin-bottom: 8px;
+    
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+.btn_sale {
+    background: none;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 5px 10px;
+    
+    text-align: center;
+}
+.title_product_more {
+    font-family: 'Roboto', sans-serif;
+    color: #ddba76;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }

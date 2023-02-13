@@ -10,12 +10,22 @@ import { useDispatch, useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./ProductDetail.module.css";
 import 'react-toastify/dist/ReactToastify.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+
 
 import { style } from "@mui/system";
 import Link from "next/link";
 import { addItem } from "../../store/features/cart/cart.slice";
 import { ToastContainer } from "react-toastify";
 import { selectProductById } from "../../store/features/Product.slice";
+import { selectProductsList } from '../../store/features/Product.slice';
+import Card from 'react-bootstrap/Card';
 
 
 import {
@@ -31,13 +41,21 @@ import { app } from "../../lib/firebase";
 import { getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
 import { selectUser } from "../../store/auth.slice"
+import { useRouter } from "next/router";
 const ItemDetail = ({ data }) => {
+  
   const auth = getAuth(app);
   const user = useSelector(selectUser);
   const [cart, setCart] = React.useState([]);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = React.useState(1);
-  const product = useSelector(selectProductById(data.id));
+  const router = useRouter();
+  
+  
+  const products = useSelector(selectProductsList)
+  const product = products.products
+  
+  
 
   const countUp = () => {
     setQuantity(quantity + 1);
@@ -59,7 +77,7 @@ const ItemDetail = ({ data }) => {
   // console.log(product);
 
   // add to cart
-  const cartRef = collection(getFirestore(app), "store");
+  const cartRef = collection(getFirestore(app), "wallet");
 
   React.useEffect(() => {
     const q = query(cartRef);
@@ -133,6 +151,7 @@ const ItemDetail = ({ data }) => {
   };
 
   return (
+    
 
 <>
         <Container fluid className={styles.background_color}>
@@ -220,6 +239,53 @@ const ItemDetail = ({ data }) => {
 
                   
               </Row>
+          </Container>
+
+          <Container className=''>
+                <h4 className={styles.title_product_more}>SẢN PHẨM LIÊN QUAN</h4>
+                <Swiper
+         slidesPerView={1}
+         spaceBetween={10}
+       
+         autoplay={{
+           delay: 2500,
+           disableOnInteraction: false,
+         }}
+         modules={[Autoplay, Pagination, Navigation]}
+         breakpoints={{
+           640: {
+             slidesPerView: 2,
+             spaceBetween: 20,
+           },
+           768: {
+             slidesPerView: 3,
+             spaceBetween: 40,
+           },
+           1024: {
+             slidesPerView: 4,
+             spaceBetween: 50,
+           },
+         }}
+       
+         className="mySwiper pb-5"
+      >
+          {product.map((item) => (
+        <SwiperSlide>
+          <Card className={styles.card}>
+            <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
+            <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
+              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
+              <Card.Text>
+              <div className={styles.price}>350.000 VND</div>
+              </Card.Text>
+              <div className={styles.price_sale}> 250.000 VND</div>
+              <button className={styles.btn_sale}>Mua ngay</button>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+          ))}
+        
+      </Swiper>
           </Container>
         </Container>
 

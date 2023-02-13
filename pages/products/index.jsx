@@ -160,7 +160,7 @@ const Products = ({ data = [], filter, url }) => {
 
 
   // add to cart
-  const cartRef = collection(getFirestore(app), "store");
+  const cartRef = collection(getFirestore(app), "wallet");
 
   React.useEffect(() => {
     const q = query(cartRef);

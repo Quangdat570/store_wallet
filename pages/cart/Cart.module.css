@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+@media screen and (max-width:375px) {
+  .vip {
+    justify-content: center;
+  }
+  .name_products {
+    text-align: center;
+  }
+  .price_products {
+    text-align: center;
+  }
+  .mmm {
+    text-align: center;
+  }
+  .img_products {
+    width: 100%;
+    margin: auto;
+  }
+  .button_return {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width:376px) and (max-width:767px)  {
+  .img_products {
+    width: 100%;
+    margin: auto;
+  }
+  .vip {
+    justify-content: center;
+  }
+  .name_products {
+    text-align: center;
+  }
+  .price_products {
+    text-align: center;
+  }
+  .mmm {
+    text-align: center;
+  }
+  .button_return {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width:768px) {
+.img_products {
+  max-height: 270px;
+  padding: 20px 0;
+  
+}
+.button_return {
+  padding: 0 0rem 2rem 2rem;
+}
+
+.container {
+  padding: 2rem;
+}
+
+}
+
+
+
+.path_container {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    align-items: center;
+    padding: 10px 0;
+   
+}
+.background_color {
+    background-color: rgba(220, 220, 220, 0.3);
+}
+.breadcump_home {
+    text-decoration: none;
+    color: #333;
+
+}
+.breadcump_home:hover {
+    color: #333;
+}
+.icon_breadcump {
+    font-weight: 600;
+    font-size: 18px;
+    width: 28px;
+}
+
+/* -------------------- */
+
+.page {
+    padding: 50px 0;
+    background-color: #1B2838;
+    color: #FFFFFF;
+}
+.mT80 {
+    margin-top: 3rem;
+  }
+  
+  .mT20 {
+    margin-top: 2rem;
+  }
+
+  .image {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .center {
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #999;
+  }
+  
+  .line {
+    border-bottom: 1px solid #999;
+  }
+  
+  .name {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .th {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+  }
+  
+  .delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete svg path {
+    font-size: 2.5rem;
+    color: black;
+  }
+  
+  .delete svg:hover {
+    background-color: #dadada;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .price {
+    font-size: 2.2rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .quantity {
+    display: flex;
+  }
+  
+  .quantity p {
+    font-size: 2.2rem;
+    padding: 1rem;
+  }
+  
+  .quantity p:first-child {
+    cursor: pointer;
+  }
+  
+  .quantity p:last-child {
+    cursor: pointer;
+  }
+  
+  .total {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .money {
+    font-size: 2.2rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .empty {
+    text-align: center;
+  }
+  
+  .cart {
+    margin-top: 8rem;
+  }
+
+  .layout_products {
+    display: flex;
+    border: 1px solid #727272;
+    position: relative;
+  }
+ 
+  .name_products {
+    margin: 20px 0px 10px;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    font-size: 24px;
+    font-weight: 700;
+    
+  }
+  .price_products {
+    margin: 0px 0px 10px;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: #282727;
+  }
+  .push_products {
+    border: 1px solid rgba(210, 51, 105, 0.5);
+    color: rgb(210, 51, 105);
+    max-width: 40px;
+    max-height: 30px;
+    padding: 5px 15px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+  }
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .close:hover {
+    background-color: rgb(210, 51, 105);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 100%;
+    transition: 0.3s;
+  }
+  .vip {
+    display: flex;
+  }
+  .aaaa {
+    padding: 1rem;
+    border: 1px solid #525252;
+  }
+  .total {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+   
+    font-weight: 700;
+  }
+  .total_price {
+    margin: 0px 0px 10px;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: #282727;
+  }
+  .mmm {
+    padding-top: 1rem;
+  }
+  /* .container {
+    margin-top: 30px;
+  } */
+
+  .title_cart {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+  }
+  .name_products {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
+  .total {
+    display: flex;
+    justify-content: space-between;
+  }
+  .tinh {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .toan {
+    font-size: 20px;
+    font-weight: 500;
+    color: #dc3545;
+  }
+  .ship {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding-bottom: 20px;
+  }
+  .btn_checkout {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #e5e5e5;
+    background-color: #282727;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    text-align: center;
+  }
+  .btn_checkout:hover {
+    opacity: 0.9;
+    color: #fff;
+  }
+  .btn_checkout_swaper {
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  .max_height {
+    max-height: 416px;
+    border: 1px solid #e5e5e5;
+    padding: 20px 25px;
+  }

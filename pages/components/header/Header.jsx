@@ -104,7 +104,7 @@ export default function Header() {
 
   const [carts, setCart] = React.useState([]);
 
-  const cartRef = collection(getFirestore(app), "store");
+  const cartRef = collection(getFirestore(app), "wallet");
   React.useEffect(() => {
     const q = query(cartRef);
     const cartlist = onSnapshot(q, (querySnapshot) => {
@@ -257,8 +257,8 @@ export default function Header() {
     </div>
         <div className='header-logo'>
           <Link href='/' className={styles.logo1}>
-            CLOUD
-            <span className={styles.logo2}>XGAME</span>
+            The
+            <span className={styles.logo2}>Wallet</span>
           </Link>
         </div>
         <div className='content d-flex  align-items-center d-none d-sm-block'>
