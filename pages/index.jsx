@@ -17,7 +17,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({products}) {
+  
   return (
     <>
       <Head>
@@ -32,22 +33,28 @@ export default function Home() {
       <Container className='pt-5 pb-5'>
         <h2 className={styles.sale}>KHUYẾN MẠI THÁNG NÀY</h2>
         <div className='row'>
-          <div className='col-6 col-md-3 p-0'>
+          {products.map((item) => (
+           <div className='col-6 col-md-3 p-0'>
 
           <Card className={styles.card}>
-            <div  ><Card.Img variant="top" src="../home-img/sale1.jpg"  className={styles.img_sale} /></div>
+            <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
             <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
+              <Card.Title> <div className={styles.name_products_sale}>{item.name}</div></Card.Title>
               <Card.Text>
-              <div className={styles.price}>350.000 VND</div>
+              <div className={styles.price}>{item.price} VND</div>
               </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
-              <button className={styles.btn_sale}>Mua ngay</button>
+              <div className={styles.price_sale}> {item.price_sale} VND</div>
+              <Link href={{
+                pathname:'/products/[gid]',
+                query: {gid: item.id}
+              }}><button className={styles.btn_sale}>Xem ngay</button></Link>
             </Card.Body>
           </Card>
-          </div>
+          </div> 
 
-          <div className='col-6 col-md-3 p-0'>
+          ))}
+
+          {/* <div className='col-6 col-md-3 p-0'>
 
           <Card className={styles.card}>
             <div  ><Card.Img variant="top" src="../home-img/sale2.jpg" className={styles.img_sale}  /></div>
@@ -60,9 +67,9 @@ export default function Home() {
               <button className={styles.btn_sale}>Mua ngay</button>
             </Card.Body>
           </Card>
-          </div>
+          </div> */}
 
-          <div className='col-6 col-md-3 p-0'>
+          {/* <div className='col-6 col-md-3 p-0'>
 
           <Card className={styles.card}>
             <div  ><Card.Img variant="top" src="../home-img/sale3.jpg"  className={styles.img_sale} /></div>
@@ -75,9 +82,9 @@ export default function Home() {
               <button className={styles.btn_sale}>Mua ngay</button>
             </Card.Body>
           </Card>
-          </div>
+          </div> */}
 
-          <div className='col-6 col-md-3 p-0'>
+          {/* <div className='col-6 col-md-3 p-0'>
 
           <Card className={styles.card}>
             <div  ><Card.Img variant="top" src="../home-img/sale4.jpg" className={styles.img_sale}  /></div>
@@ -90,7 +97,7 @@ export default function Home() {
               <button className={styles.btn_sale}>Mua ngay</button>
             </Card.Body>
           </Card>
-          </div>
+          </div> */}
 
         </div>
 
@@ -120,7 +127,7 @@ export default function Home() {
 
       <Container className='pt-5 pb-5'>
         <h2 className={styles.sale}>SẢN PHẨM BÁN CHẠY</h2>
-        <div className='row'>
+        {/* <div className='row'>
           <div className='col-6 col-md-3 p-0'>
 
           <Card className={styles.card}>
@@ -181,7 +188,54 @@ export default function Home() {
           </Card>
           </div>
 
-        </div>
+        </div> */}
+
+      <Swiper
+         slidesPerView={1}
+         spaceBetween={10}
+       
+         autoplay={{
+           delay: 2500,
+           disableOnInteraction: false,
+         }}
+         modules={[Autoplay, Pagination, Navigation]}
+         breakpoints={{
+           640: {
+             slidesPerView: 2,
+             spaceBetween: 20,
+           },
+           768: {
+             slidesPerView: 3,
+             spaceBetween: 40,
+           },
+           1024: {
+             slidesPerView: 4,
+             spaceBetween: 50,
+           },
+         }}
+       
+         className="mySwiper "
+      >
+          {products.map((item) => (
+        <SwiperSlide>
+          <Card className={styles.card}>
+            <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
+            <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
+              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
+              <Card.Text>
+              <div className={styles.price}>350.000 VND</div>
+              </Card.Text>
+              <div className={styles.price_sale}> 250.000 VND</div>
+              <Link href={{
+                pathname:'/products/[gid]',
+                query: {gid: item.id}
+              }}><button className={styles.btn_sale}>Xem ngay</button></Link>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+          ))}
+        
+      </Swiper>
 
         
 
@@ -191,3 +245,26 @@ export default function Home() {
     </>
   )
 }
+
+export const getStaticProps = async (ctx) => {
+ 
+
+  const res = await fetch("https://63e5a7777eef5b22337712f5.mockapi.io/products");
+  
+  // const resPon = await fetch("https://63d729ad5dbd723244211e09.mockapi.io/products")
+  // const resData = await resPon.json();
+
+  const data = await res.json();
+
+
+  return {
+    props: {
+      // games: resData.slice(20),
+      products: data.slice(5,9),
+      // feature: resData.slice(13,17),
+      // sale: resData.slice(8,12),
+    },
+    
+  };
+  
+};

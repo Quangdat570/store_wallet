@@ -90,11 +90,11 @@
     height: 38px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
 }
 .price {
     color: #ddba76;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
     text-decoration: line-through;
     text-align: center;
     font-family: 'Roboto', sans-serif;
@@ -131,6 +131,8 @@
     margin-top: 2.4rem;
     justify-content: center;
     border-radius: 10px;
+    color: #282727;
+    
   }
   
   .pagination li a,
@@ -145,7 +147,27 @@
   .pagination li {
     border-radius: 10px;
   }
+  .pagination li .active {
+    color: #ddba76;
+  }
   
   .pagination p:hover {
     background-color: #dadada;
+  }
+  .search {
+    width: 100%;
+  
+    padding: 5px 5px 15px 5px;
+  
+    outline: none;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+  }
+  .search_input {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
   }

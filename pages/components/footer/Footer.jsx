@@ -98,7 +98,7 @@ const Footer = () => {
                   <h4 className={styles.title_1}>ĐĂNG KÍ NHẬN KHUYẾN MÃI</h4>
                   <hr />
                   <div className={styles.email_input}>
-                    <input type="text" placeholder="Nhập email của bạn" />
+                    <input type="text" placeholder="Nhập email của bạn" className={styles.input_footer} />
                     <button className={styles.btn_sign_up}>ĐĂNG KÍ</button>
                   </div>
                 </div>

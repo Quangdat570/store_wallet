@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { RxDoubleArrowRight } from 'react-icons/rx'
 import { Container, Row, Col,Form, Card,Pagination } from 'react-bootstrap'
 import { Box, FormGroup } from "@mui/material";
+// import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 
 import { useSelector, useDispatch } from "react-redux";
@@ -84,6 +86,10 @@ const Products = ({ data = [], filter, url }) => {
         {index + 1}
       </Pagination.Item>
     ));
+
+  const handleChangePageCur = (event, value) => {
+    dispatch(pageChanged(value));
+  };
 
   const router = useRouter();
   const { register, handleSubmit, getValues } = useForm({
@@ -246,10 +252,21 @@ const Products = ({ data = [], filter, url }) => {
             </div>
         </div>
     </Container>
-    <Container className=''>
+    <Container className='pt-5'>
       <Row>
         <Col xs={12} lg={3} >
           <div className={styles.filter_product}>
+            <h5>Tìm kiếm sản phẩm</h5>
+          <div className={styles.search}>
+                  <input
+                    value={searchText}
+                    className={styles.search_input}
+                    type="text"
+                    placeholder="Search"
+                    onChange={handleSearchTextChange}
+                  />
+                 
+          </div>
           <h5>Danh mục sản phẩm</h5>
           <Form className={styles.filter}
                 onChange={() => {
@@ -286,7 +303,7 @@ const Products = ({ data = [], filter, url }) => {
 
         <Col xs={12} lg={9}>
           <div className={styles.title}>
-            <h4 className=''>Tất cả sản phẩm</h4>
+            <h5 className=''>Tất cả sản phẩm</h5>
           <div className={styles.boxSelect} onChange={handleSort}>
             <div className='pe-2'>Sắp xếp: </div>
               <select className={styles.select} >
@@ -317,7 +334,7 @@ const Products = ({ data = [], filter, url }) => {
                     <div className={styles.price}>{item.price} VND</div>
                     </Card.Text>
                     <div className={styles.price_sale}> {item.price_sale} VND</div>
-                    <button className={styles.btn_sale}  >Mua ngay</button>
+                    <button className={styles.btn_sale}  >Xem ngay</button>
                   </Card.Body>
                 </Card>
                 
@@ -329,6 +346,19 @@ const Products = ({ data = [], filter, url }) => {
               <Pagination className={styles.pagination}>
                 {paginationItems}
               </Pagination>
+
+                {/* <Stack
+                  spacing={2}
+                  sx={{ alignItems: "center", marginTop: "60px" }}
+                >
+                  <Pagination
+                    count={totalPage}
+                    page={currentPage}
+                    variant="outlined"
+                    shape="rounded"
+                    onChange={handleChangePageCur}
+                  />
+                </Stack> */}
 
             {/* <div className="col-sm-6 col-lg-4">
               <Link href='' className={styles.color_link}>

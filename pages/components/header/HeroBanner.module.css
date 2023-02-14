@@ -1,4 +1,4 @@
-.background1 {
+/* .background1 {
     width: 100%;
     height: 100vh;
     background-image: url(https://hungmai0110.github.io/my_project_Js/public/img/banner.jpg);
@@ -27,4 +27,8 @@
   .btn_banner:hover {
     background-color: #333;
     color: #fff;
+  } */
+
+  .img_banner {
+    width: 100%;
   }

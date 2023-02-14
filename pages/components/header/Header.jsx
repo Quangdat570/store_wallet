@@ -27,6 +27,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/router";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import StoreOutlinedIcon from '@mui/icons-material/StoreOutlined';
+import PhoneCallbackOutlinedIcon from '@mui/icons-material/PhoneCallbackOutlined';
+import EventNoteOutlinedIcon from '@mui/icons-material/EventNoteOutlined';
 
 
 
@@ -179,20 +183,22 @@ export default function Header() {
           
           <Link href="/" className={styles.underline}>
             <ListItemButton
-              sx={{ padding: "8px 150px 8px 50px", borderBottom:"1px solid #727272" }}
+              sx={{ padding: "20px 150px 20px 20px", borderBottom:"1px solid #F6EFEF", display:'flex', gap:'15px', alignItems:'center' }}
               className={styles["link-button"]}
               onClick={() => setOpenMenu(!openMenu)}
-            >
+              >
+              <HomeOutlinedIcon className={styles.icons_menu_mobile}/>
               <ListItemText className={styles["link-text"]} >Trang chủ</ListItemText>
             </ListItemButton>
           </Link>
 
           <Link href="/about" className={styles.underline}>
             <ListItemButton
-              sx={{ padding: "4px 150px 4px 50px", borderBottom:"1px solid #727272" }}
+              sx={{ padding: "20px 150px 20px 20px", borderBottom:"1px solid #F6EFEF", display:'flex', gap:'15px', alignItems:'center' }}
               className={styles["link-button"]}
               onClick={() => setOpenMenu(!openMenu)}
             >
+              <EventNoteOutlinedIcon className={styles.icons_menu_mobile}/>
               <ListItemText className={styles["link-text"]}>
                 Giới thiệu
               </ListItemText>
@@ -201,10 +207,11 @@ export default function Header() {
 
           <Link href="/products" className={styles.underline}>
             <ListItemButton
-              sx={{ padding: "4px 150px 4px 50px", borderBottom:"1px solid #727272" }}
+              sx={{ padding: "20px 150px 20px 20px", borderBottom:"1px solid #F6EFEF", display:'flex', gap:'15px', alignItems:'center' }}
               className={styles["link-button"]}
               onClick={() => setOpenMenu(!openMenu)}
             >
+              <StoreOutlinedIcon className={styles.icons_menu_mobile}/>
               <ListItemText className={styles["link-text"]}>
                 Sản phẩm
               </ListItemText>
@@ -213,7 +220,7 @@ export default function Header() {
 
           
 
-          <Link href="/faq" className={styles.underline}>
+          {/* <Link href="/faq" className={styles.underline}>
             <ListItemButton
               sx={{
                 padding: "4px 150px 4px 50px", borderBottom:"1px solid #727272"
@@ -223,16 +230,17 @@ export default function Header() {
             >
               <ListItemText className={styles["link-text"]}>Tin tức</ListItemText>
             </ListItemButton>
-          </Link>
+          </Link> */}
 
-          <Link href="" className={styles.underline}>
+          <Link href="/contact" className={styles.underline}>
             <ListItemButton
               sx={{
-                padding: "4px 150px 4px 50px", borderBottom:"1px solid #727272"
+                padding: "20px 150px 20px 20px", borderBottom:"1px solid #F6EFEF", display:'flex', gap:'15px', alignItems:'center'
               }}
               className={styles["link-button"]}
               onClick={() => setOpenMenu(!openMenu)}
             >
+              <PhoneCallbackOutlinedIcon className={styles.icons_menu_mobile}/>
               <ListItemText className={styles["link-text"]}>Liên hệ</ListItemText>
             </ListItemButton>
           </Link>
@@ -249,7 +257,7 @@ export default function Header() {
         sx={{ marginLeft: "auto" }}
         onClick={() => setOpenMenu(!openMenu)}
       >
-        <MenuIcon sx={{color:"#fff"}} />
+        <MenuIcon sx={{color:"#282727"}} />
       </IconButton>
     
 
@@ -273,12 +281,12 @@ export default function Header() {
               <li >
                 <Link href='/products' className={styles.meme}>Sản phẩm</Link>
               </li>
-              <li >
+              {/* <li >
                 <Link href='/faq' className={styles.meme}>Tin tức</Link>
-              </li>
+              </li> */}
 
               <li >
-                <Link href='/faq' className={styles.meme}>Liên hệ</Link>
+                <Link href='/contact' className={styles.meme}>Liên hệ</Link>
               </li>
             </div>
           </div>
