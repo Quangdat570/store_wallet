@@ -168,7 +168,8 @@ export default function Home({products}) {
               <Link href={{
                 pathname:'/products/[gid]',
                 query: {gid: item.id}
-              }}><button className={styles.btn_sale}>Xem ngay</button></Link>
+              }}><button className={styles.btn_sale}>Xem ngay</button>
+              </Link>
             </Card.Body>
           </Card>
         </SwiperSlide>
@@ -199,7 +200,7 @@ export const getStaticProps = async (ctx) => {
   return {
     props: {
       // games: resData.slice(20),
-      products: data.slice(5,9),
+      products: data.slice(13,17),
       // feature: resData.slice(13,17),
       // sale: resData.slice(8,12),
     },

@@ -280,7 +280,11 @@ const ItemDetail = ({ data }) => {
               <div className={styles.price}>{item.price} VND</div>
               </Card.Text>
               <div className={styles.price_sale}> {item.price_sale} VND</div>
-              <button className={styles.btn_sale}>Xem ngay</button>
+              <Link href={{
+                pathname:'/products/[gid]',
+                query: {gid: item.id}
+              }}><button className={styles.btn_sale}>Xem ngay</button>
+              </Link>
             </Card.Body>
           </Card>
         </SwiperSlide>
