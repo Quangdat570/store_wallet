@@ -17,7 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({products}) {
+export default function Home({products,sale}) {
   
   return (
     <>
@@ -155,16 +155,16 @@ export default function Home({products}) {
        
          className="mySwiper "
       >
-          {products.map((item) => (
+          {sale.map((item) => (
         <SwiperSlide>
           <Card className={styles.card}>
             <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
             <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
+              <Card.Title> <div className={styles.name_products_sale}>{item.name}</div></Card.Title>
               <Card.Text className='m-0'>
-              <div className={styles.price}>350.000 VND</div>
+              <div className={styles.price}>{item.price} VND</div>
               </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
+              <div className={styles.price_sale}> {item.price_sale} VND</div>
               <Link href={{
                 pathname:'/products/[gid]',
                 query: {gid: item.id}
@@ -202,7 +202,7 @@ export const getStaticProps = async (ctx) => {
       // games: resData.slice(20),
       products: data.slice(13,17),
       // feature: resData.slice(13,17),
-      // sale: resData.slice(8,12),
+      sale:data.slice(17,21)
     },
     
   };
