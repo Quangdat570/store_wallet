@@ -296,39 +296,39 @@ export default function Header() {
           
           {!auth.currentUser ? (
                                   
-                                    // <Link href='/login'>
-                                    //   <PersonIcon sx={{fontSize:'25px', color:"#282727"}} />
-                                    //   </Link>
-                                    <PersonIcon sx={{fontSize:'25px', color:"#282727", cursor:'pointer'}}  onClick={() => {
-                                      signInWithPopup(auth, provider)
-                                        .then(() => {
-                                          if (auth.currentUser) {
-                                            toast.success(`Login successfully`, {
-                                              position: "top-right",
-                                              autoClose: 5000,
-                                              hideProgressBar: false,
-                                              closeOnClick: true,
-                                              pauseOnHover: true,
-                                              draggable: true,
-                                              progress: undefined,
-                                              theme: "light",
-                                            });
-                                            router.push("/");
-                                          }
-                                        })
-                                        .catch((err) => {
-                                          toast.error(`Incorrect account or password`, {
-                                            position: "top-right",
-                                            autoClose: 5000,
-                                            hideProgressBar: false,
-                                            closeOnClick: true,
-                                            pauseOnHover: true,
-                                            draggable: true,
-                                            progress: undefined,
-                                            theme: "light",
-                                          });
-                                        });
-                                    }} />
+                                    <Link href='/login'>
+                                      <PersonIcon sx={{fontSize:'25px', color:"#282727"}} />
+                                      </Link>
+                                    // <PersonIcon sx={{fontSize:'25px', color:"#282727", cursor:'pointer'}}  onClick={() => {
+                                    //   signInWithPopup(auth, provider)
+                                    //     .then(() => {
+                                    //       if (auth.currentUser) {
+                                    //         toast.success(`Login successfully`, {
+                                    //           position: "top-right",
+                                    //           autoClose: 5000,
+                                    //           hideProgressBar: false,
+                                    //           closeOnClick: true,
+                                    //           pauseOnHover: true,
+                                    //           draggable: true,
+                                    //           progress: undefined,
+                                    //           theme: "light",
+                                    //         });
+                                    //         router.push("/");
+                                    //       }
+                                    //     })
+                                    //     .catch((err) => {
+                                    //       toast.error(`Incorrect account or password`, {
+                                    //         position: "top-right",
+                                    //         autoClose: 5000,
+                                    //         hideProgressBar: false,
+                                    //         closeOnClick: true,
+                                    //         pauseOnHover: true,
+                                    //         draggable: true,
+                                    //         progress: undefined,
+                                    //         theme: "light",
+                                    //       });
+                                    //     });
+                                    // }} />
                                 ) : (
                                  
                                     <Box>

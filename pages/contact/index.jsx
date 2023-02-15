@@ -77,7 +77,7 @@ const index = () => {
       });
     
       const fullname = register("fullname", {
-        required: "Please fill out this field.",
+        required: "Vui lòng điền vào trường này",
         validate: {
           length: (v) =>
             (6 <= v.toLowerCase().trim().length &&
@@ -87,7 +87,7 @@ const index = () => {
       });
     
       const email = register("email", {
-        required: "Please fill out this field.",
+        required: "Vui lòng điền vào trường này",
         validate: {
           isEmail: (v) =>
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -95,13 +95,13 @@ const index = () => {
             ) || "Please enter an email address.",
         },
       });
-      const phone = register("phone", {
-        required: "Please fill out this field.",
-        validate: {
-          isValidPhoneNumber: (v) =>
-            isValidPhoneNumber(v) || "Please enter a phone number.",
-        },
-      });
+      // const phone = register("phone", {
+      //   required: "Vui lòng điền vào trường này",
+      //   validate: {
+      //     isValidPhoneNumber: (v) =>
+      //       isValidPhoneNumber(v) || "Vui lòng nhập số điện thoại.",
+      //   },
+      // });
     
      
 
@@ -364,7 +364,7 @@ const index = () => {
                         {errors.email?.message}
                       </Typography>
                     </Box>
-                    <Box
+                    {/* <Box
                       sx={{
                         marginBottom: "20px",
                         input: { fontFamily: "'Kodchasan', sans-serif" },
@@ -378,7 +378,33 @@ const index = () => {
                       >
                         {errors.phone?.message}
                       </Typography>
-                    </Box>
+                    </Box> */}
+                     <Box
+                        sx={{
+                          marginBottom: "20px",
+                          input: { fontFamily: "'Roboto', sans-serif" },
+                        }}
+                      >
+                        <TextField
+                          label="Phone"
+                          variant="outlined"
+                          fullWidth
+                          // {...phone}
+                          type="number"
+                          {...register("phone", {
+                            valueAsNumber: true,
+                          })}
+                        />
+                        <Typography
+                          sx={{
+                            color: "red",
+                            fontFamily: "'Roboto', sans-serif",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.phone?.message}
+                        </Typography>
+                      </Box>
 
                     <CustomInput
                       aria-label="Demo input"

@@ -85,7 +85,7 @@ function CheckBox() {
   
 
   const address = register("address", {
-    required: "Please fill out this field.",
+    required: "Vui lòng điền vào trường này.",
     validate: {
       length: (v) =>
         (6 <= v.toLowerCase().trim().length &&
@@ -94,11 +94,11 @@ function CheckBox() {
     },
   });
   const lastname = register("lastname", {
-    required: "Please fill out this field.",
+    required: "Vui lòng điền vào trường này.",
   });
 
   const first = register("first", {
-    required: "Please fill out this field.",
+    required: "Vui lòng điền vào trường này.",
     validate: {
       length: (v) =>
         (2 <= v.toLowerCase().trim().length &&
@@ -108,12 +108,12 @@ function CheckBox() {
   });
 
   const email = register("email", {
-    required: "Please fill out this field.",
+    required: "Vui lòng điền vào trường này.",
     validate: {
       isEmail: (v) =>
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
           v
-        ) || "Please enter an email address.",
+        ) || "Vui lòng nhập đúng địa chỉ email.",
     },
   });
 
