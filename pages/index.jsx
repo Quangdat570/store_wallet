@@ -40,7 +40,7 @@ export default function Home({products}) {
             <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
             <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
               <Card.Title> <div className={styles.name_products_sale}>{item.name}</div></Card.Title>
-              <Card.Text>
+              <Card.Text className='m-0'>
               <div className={styles.price}>{item.price} VND</div>
               </Card.Text>
               <div className={styles.price_sale}> {item.price_sale} VND</div>
@@ -127,68 +127,7 @@ export default function Home({products}) {
 
       <Container className='pt-5 pb-5'>
         <h2 className={styles.sale}>SẢN PHẨM BÁN CHẠY</h2>
-        {/* <div className='row'>
-          <div className='col-6 col-md-3 p-0'>
-
-          <Card className={styles.card}>
-            <div  ><Card.Img variant="top" src="../home-img/sale1.jpg"  className={styles.img_sale} /></div>
-            <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
-              <Card.Text>
-              <div className={styles.price}>350.000 VND</div>
-              </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
-              <button className={styles.btn_sale}>Mua ngay</button>
-            </Card.Body>
-          </Card>
-          </div>
-
-          <div className='col-6 col-md-3 p-0'>
-
-          <Card className={styles.card}>
-            <div  ><Card.Img variant="top" src="../home-img/sale2.jpg" className={styles.img_sale}  /></div>
-            <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
-              <Card.Text>
-              <div className={styles.price}>350.000 VND</div>
-              </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
-              <button className={styles.btn_sale}>Mua ngay</button>
-            </Card.Body>
-          </Card>
-          </div>
-
-          <div className='col-6 col-md-3 p-0'>
-
-          <Card className={styles.card}>
-            <div  ><Card.Img variant="top" src="../home-img/sale3.jpg"  className={styles.img_sale} /></div>
-            <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
-              <Card.Text>
-              <div className={styles.price}>350.000 VND</div>
-              </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
-              <button className={styles.btn_sale}>Mua ngay</button>
-            </Card.Body>
-          </Card>
-          </div>
-
-          <div className='col-6 col-md-3 p-0'>
-
-          <Card className={styles.card}>
-            <div  ><Card.Img variant="top" src="../home-img/sale4.jpg" className={styles.img_sale}  /></div>
-            <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
-              <Card.Text>
-              <div className={styles.price}>350.000 VND</div>
-              </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
-              <button className={styles.btn_sale}>Mua ngay</button>
-            </Card.Body>
-          </Card>
-          </div>
-
-        </div> */}
+       
 
       <Swiper
          slidesPerView={1}
@@ -222,7 +161,7 @@ export default function Home({products}) {
             <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
             <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
               <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
-              <Card.Text>
+              <Card.Text className='m-0'>
               <div className={styles.price}>350.000 VND</div>
               </Card.Text>
               <div className={styles.price_sale}> 250.000 VND</div>

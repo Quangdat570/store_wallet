@@ -56,6 +56,7 @@ const ItemDetail = ({ data }) => {
   const product = products.products
   
   
+  
 
   const countUp = () => {
     setQuantity(quantity + 1);
@@ -100,7 +101,7 @@ const ItemDetail = ({ data }) => {
 
     if (auth.currentUser) {
       if (check.length > 0) {
-        toast.success(`${product.name} added to cart successfully`, {
+        toast.success(` Thêm vào giỏ hàng thành công`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -117,7 +118,7 @@ const ItemDetail = ({ data }) => {
         console.log("success");
       } else {
         console.log("fail")
-        toast.success(`${product.name} added to cart successfully`, {
+        toast.success(` Thêm vào giỏ hàng thành công`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -137,7 +138,7 @@ const ItemDetail = ({ data }) => {
 
       }
     } else {
-      toast.warning(`You need to login to perform this function`, {
+      toast.warning(`Bạn cần đăng nhập để thực hiện chức năng này`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -176,7 +177,7 @@ const ItemDetail = ({ data }) => {
                    <img src={data.description} alt=""  className={styles.img}/>
               
                   </div>
-                  <div className="col-12 col-md-5 d-flex  flex-column justify-content-center">
+                  <div className="col-12 col-md-5 d-flex  flex-column justify-content-center pt-4 pb-3">
                       
                         <h1 className={styles.name}>{data.name}</h1>
                         <div className={styles.status}>Tình trạng: <span className='text-danger mx-2 mb-1'>Còn hàng</span></div>
@@ -262,7 +263,7 @@ const ItemDetail = ({ data }) => {
              spaceBetween: 40,
            },
            1024: {
-             slidesPerView: 4,
+             slidesPerView: 3,
              spaceBetween: 50,
            },
          }}
@@ -274,12 +275,12 @@ const ItemDetail = ({ data }) => {
           <Card className={styles.card}>
             <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
             <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
-              <Card.Title> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
-              <Card.Text>
-              <div className={styles.price}>350.000 VND</div>
+              <Card.Title className='m-0'> <div className={styles.name_products_sale}>Móc Chìa Khóa Kiêm Ví Mini - 6976</div></Card.Title>
+              <Card.Text className='m-0'>
+              <div className={styles.price}>{item.price} VND</div>
               </Card.Text>
-              <div className={styles.price_sale}> 250.000 VND</div>
-              <button className={styles.btn_sale}>Mua ngay</button>
+              <div className={styles.price_sale}> {item.price_sale} VND</div>
+              <button className={styles.btn_sale}>Xem ngay</button>
             </Card.Body>
           </Card>
         </SwiperSlide>

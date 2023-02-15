@@ -148,7 +148,7 @@ function Cart() {
                         </div>
                         <div className="col-12 col-md-6 p-4">
                         <div className={styles.name_products}>{item.name}</div>
-                            <div className={styles.price_products}>{item.price_sale} VND</div>
+                            <div className={styles.price_products}><span className={styles.title_price_sale}>Giá: </span> {item.price_sale} VND</div>
                             <div className={styles.vip}>
                               <div className={styles.push_products}
                                onClick={() => {
@@ -161,7 +161,7 @@ function Cart() {
                                   }}>+</div>
                             </div>
                             <div className={styles.mmm}>
-                              <span className={styles.total}>total: </span>
+                              <span className={styles.total}>Tổng: </span>
                             <span className={styles.total_price}> {(item.price_sale  * item.quantity).toFixed(3)} VND</span>
                             </div>
                             
@@ -189,14 +189,14 @@ function Cart() {
                                       Text in a modal
                                     </Typography> */}
                                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                    Are you sure you want to remove it from your cart?
+                                    Bạn có chắc chắn muốn xóa nó khỏi giỏ hàng của mình không?
                                     </Typography>
-                                    <Box sx={{textAlign:'center', display:'flex', gap:'5px', justifyContent:'center'}}>
-                                      <Button sx={{textAlign:'center'}}
+                                    <Box sx={{textAlign:'center', display:'flex', gap:'5px', justifyContent:'center', paddingTop:"10px"}}>
+                                      <button className={styles.btn_cart_delete} 
                                       onClick={() => {
                                         handleRemoveItem(item.id);
-                                      }} variant="outlined">Delete</Button>
-                                      <Button onClick={handleClose} variant="contained">Close</Button>
+                                      }} variant="outlined">Delete</button>
+                                      <button onClick={handleClose} className={styles.btn_cart}  >Close</button>
                                     </Box>
                                   </Box>
                                 </Modal>
@@ -245,13 +245,13 @@ function Cart() {
                 fontWeight: "700",
                 fontFamily: "'Kodchasan', sans-serif",
                 marginBottom: "20px",
-              }}>No Item In Cart</Typography>
+              }}>Không Có Sản Phẩm Trong Giỏ Hàng</Typography>
           <Typography sx={{
                 fontSize: "18px",
                 fontWeight: "400",
                 fontFamily: "'Kodchasan', sans-serif",
                 marginBottom: "20px",
-              }}>Add items you want to shop</Typography>
+              }}>Thêm các mặt hàng bạn muốn mua sắm</Typography>
         <Link href="/products">
           <Button variant="contained">Start Shopping</Button>
         </Link>

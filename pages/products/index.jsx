@@ -330,7 +330,7 @@ const Products = ({ data = [], filter, url }) => {
                   </div>
                   <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
                     <Card.Title> <div className={styles.name_products_sale}>{item.name}</div></Card.Title>
-                    <Card.Text>
+                    <Card.Text className='m-1'>
                     <div className={styles.price}>{item.price} VND</div>
                     </Card.Text>
                     <div className={styles.price_sale}> {item.price_sale} VND</div>

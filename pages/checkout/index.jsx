@@ -189,7 +189,7 @@ function CheckBox() {
                             fontFamily: "'Kodchasan', sans-serif",
                           }}
                         >
-                          Contact information
+                          Thông tin liên lạc
                         </Typography>
                       </Stack>
 
@@ -252,11 +252,7 @@ function CheckBox() {
                           color: "#737373",
                         }}
                       >
-                        You may receive text messages related to order
-                        confirmation and shipping updates. Reply STOP to
-                        unsubscribe. Reply HELP for help. Message frequency
-                        varies. Msg & data rates may apply. View our Privacy
-                        policy and Terms of service.
+                        Bạn có thể nhận được tin nhắn văn bản liên quan đến xác nhận đơn hàng và cập nhật vận chuyển. Trả lời STOP để hủy đăng ký. Trả lời HELP để được trợ giúp. Tần suất tin nhắn khác nhau. Tốc độ tin nhắn & dữ liệu có thể được áp dụng. Xem chính sách quyền riêng tư và Điều khoản dịch vụ của chúng tôi.
                       </Typography>
                     </Box>
                     <Box>
@@ -268,7 +264,7 @@ function CheckBox() {
                           fontFamily: "'Kodchasan', sans-serif",
                         }}
                       >
-                        Shipping address
+                        Địa chỉ giao hàng
                       </Typography>
                       <Stack direction="row" spacing={2}>
                         <Box
@@ -431,7 +427,7 @@ function CheckBox() {
                           {carts.reduce((total, cur) => {
                             return (total += cur.price_sale * cur.quantity);
                           }, 0)}{".000 "}
-                          $
+                          VND
                         </Typography>
                       </Stack>
                       <Stack direction="row" justifyContent="space-between">
