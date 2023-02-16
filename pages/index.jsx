@@ -19,6 +19,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({products,sale}) {
   
+  
   return (
     <>
       <Head>
@@ -139,6 +140,10 @@ export default function Home({products,sale}) {
          }}
          modules={[Autoplay, Pagination, Navigation]}
          breakpoints={{
+          430: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
            640: {
              slidesPerView: 2,
              spaceBetween: 20,
@@ -158,7 +163,7 @@ export default function Home({products,sale}) {
           {sale.map((item) => (
         <SwiperSlide>
           <Card className={styles.card}>
-            <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale} /></div>
+            <div  ><Card.Img variant="top" src={item.image}  className={styles.img_sale_1} /></div>
             <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
               <Card.Title> <div className={styles.name_products_sale}>{item.name}</div></Card.Title>
               <Card.Text className='m-0'>

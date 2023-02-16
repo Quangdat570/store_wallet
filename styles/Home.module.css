@@ -6,12 +6,16 @@
     font-size: 18px;
     }
 }
+
+
+
 .sale {
     text-align: center;
     font-size: 30px;
     color: #ddba76;
     padding-bottom: 30px;
 }
+
 
 /*  */
 .name_products_sale {
@@ -53,6 +57,11 @@
     overflow: hidden;
     cursor: pointer;
 }
+.img_sale {
+    max-width: 312px;
+    min-width: 169px;
+    /* width: 267px; */
+}
 
 .card .img_sale:hover {
     -webkit-transform: scale(1.1);
@@ -61,6 +70,14 @@
     transition: all 0.8s;
     opacity:1;
 }
+.card .img_sale_1:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(0.9);
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    opacity:1;
+}
+
 .btn_sale:hover {
     background-color: #333;
     color: #fff;

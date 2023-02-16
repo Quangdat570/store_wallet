@@ -269,7 +269,7 @@ export default function Header() {
             <span className={styles.logo2}>Wallet</span>
           </Link>
         </div>
-        <div className='content d-flex  align-items-center d-none d-sm-block'>
+        <div className='content d-flex  align-items-center d-none d-md-block'>
           <div className='menu'>
             <div className={styles.list_menu}>
               <li >
